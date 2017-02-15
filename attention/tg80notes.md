@@ -54,3 +54,16 @@ Prevent attn —> identify or locate a feature
 
 * Interference should be from individual features if they were not attended to
     * Conjunctions can't be accessed, so wouldn't interfere
+
+(more on paper)
+
+## So Basically,
+
+* Detecting a conjunction of features requires attention and a serial and self-terminating search.
+* Detecting separable features does not require attention and happens in parallel.
+    * Texture segregation is pre-attentive if the distinction is on a separable feature.
+* Conjunction searches vary in difficulty (it's not just attention on or off).
+* Unidimensional distinctions can induce attention if the difference is not obvious.
+* Local features within letters are separable rather than being "unitized" (usually).
+* Identifying a conjunction of features depends on locating the item; identifying
+    a separate feature does not.
