@@ -43,5 +43,16 @@ depend on knowing where it was.
 * Participants tried to name the "odd one out" and say where it was
   * Typical feature vs. conjunction manipulation
 
-Accuracy at identifying the odd one out was more closely related to accuracy at
+Accuracy at identifying the target was more closely related to accuracy at
 locating it for the conjunction targets compared to the feature targets.
+
+## Summary
+
+* Detecting a conjunction of features requires attention and a serial and self-terminating search.
+* Detecting separable features does not require attention and happens in parallel.
+    * Texture segregation is pre-attentive if the distinction is on a separable feature.
+* Conjunction searches vary in difficulty (it's not just attention on or off).
+* Unidimensional distinctions can induce attention if the difference is not obvious.
+* Local features within letters are separable rather than being "unitized."
+* Identifying a conjunction of features depends on locating the item; identifying
+    a separate feature does not.
