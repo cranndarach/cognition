@@ -18,11 +18,30 @@ single separable feature.
 
 Otherwise, it requires attention.
 
-## The difficulty can be increased by 
+## The difficulty is graded.
 
 ### Experiment 6
 
 * Same as Exp 5 except the shapes in the conjunctive condition were similar to
   half in the other condition on one dimension, and different on another
   * Red O and green Π vs. blue O and green V
+* This conjunctive condition was significantly slower than the feature conditions,
+  but faster than Exp 5's conjunctive condition.
 
+## Without attention, are features free-floating?
+
+### Experiments 8 and 9
+
+If detecting a feature does not require attention, then it shouldn't depend on
+knowing where it was.
+
+If feature *integration* (detecting two or more features and then recognizing
+that they happen together) requires attention, then identifying a conjunction should
+depend on knowing where it was.
+
+* Presented two rows of characters for a short amount of time
+* Participants tried to name the "odd one out" and say where it was
+  * Typical feature vs. conjunction manipulation
+
+Accuracy at identifying the odd one out was more closely related to accuracy at
+locating it for the conjunction targets compared to the feature targets.
