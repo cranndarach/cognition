@@ -24,7 +24,7 @@ Otherwise, it requires attention.
 
 * Same as Exp 5 except the shapes in the conjunctive condition were similar to
   half in the other condition on one dimension, and different on another
-  * Red O and green $\Pi$ vs. blue O and green V
+    * Red O and green $\Pi$ vs. blue O and green V
 * This conjunctive condition was significantly slower than the feature conditions,
   but faster than Exp 5's conjunctive condition.
 
@@ -32,16 +32,15 @@ Otherwise, it requires attention.
 
 ### Experiments 8 and 9
 
-If detecting a feature does not require attention, then it shouldn't depend on
+* If detecting a feature does not require attention, then it shouldn't depend on
 knowing where it was.
-
-If feature *integration* (detecting two or more features and then recognizing
-that they happen together) requires attention, then identifying a conjunction should
+* If feature integration requires attention, then identifying a conjunction *should*
 depend on knowing where it was.
+    * Detecting two or more features and then recognizing that they happen together
 
 * Presented two rows of characters for a short amount of time
 * Participants tried to name the "odd one out" and say where it was
-  * Typical feature vs. conjunction manipulation
+    * Typical feature vs. conjunction manipulation
 
 Accuracy at identifying the target was more closely related to accuracy at
 locating it for the conjunction targets compared to the feature targets.
