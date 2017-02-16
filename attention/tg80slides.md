@@ -24,7 +24,7 @@ Otherwise, it requires attention.
 
 * Same as Exp 5 except the shapes in the conjunctive condition were similar to
   half in the other condition on one dimension, and different on another
-  * Red O and green Π vs. blue O and green V
+  * Red O and green $\Pi$ vs. blue O and green V
 * This conjunctive condition was significantly slower than the feature conditions,
   but faster than Exp 5's conjunctive condition.
 
