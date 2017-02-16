@@ -13,7 +13,9 @@ title: "A feature-integration theory of attention — part 2"
   boundary is vertical or horizontal
 * **Significantly slower at sorting conjunctive pack** than the feature packs.
 
-### Experiment 7: This also applies to letters
+## This also applies to letters
+
+### Experiment 7
 
 * Groups of letters that either differed by the presence or absence of a diagonal
 line (PO/RQ — feature) or by no simple feature (FK/EX — conjunction)
