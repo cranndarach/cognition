@@ -13,10 +13,17 @@ title: "A feature-integration theory of attention — part 2"
   boundary is vertical or horizontal
 * **Significantly slower at sorting conjunctive pack** than the feature packs.
 
+### Experiment 7: This also applies to letters
+
+* Groups of letters that either differed by the presence or absence of a diagonal
+line (PO/RQ — feature) or by no simple feature (FK/EX — conjunction)
+* Significantly faster to identify the border for the feature distinction compared
+to the conjunction
+
 Suggests that texture segregation is **pre-attentive** if distinguishable on a
 single separable feature.
 
-Otherwise, it requires attention.
+Also suggests that letters can be broken into features.
 
 ## The difficulty is graded.
 
