@@ -16,4 +16,13 @@ title: "A feature-integration theory of attention — part 2"
 Suggests that texture segregation is **pre-attentive** if distinguishable on a
 single separable feature.
 
+Otherwise, it requires attention.
+
+## The difficulty can be increased by 
+
+### Experiment 6
+
+* Same as Exp 5 except the shapes in the conjunctive condition were similar to
+  half in the other condition on one dimension, and different on another
+  * Red O and green Π vs. blue O and green V
 
