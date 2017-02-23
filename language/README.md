@@ -8,7 +8,7 @@ Below are usage instructions, followed by some details of the program.
 
 ## Running the program
 
-**Requirement:** Python3
+**Requirement:** Python3  
 **Recommended:** IPython interpreter
 
 * Download [the file](https://raw.githubusercontent.com/cranndarach/cognition/master/language/grammar.py); save it somewhere you'll remember (e.g., Desktop or Documents)

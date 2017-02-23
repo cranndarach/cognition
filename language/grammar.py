@@ -28,13 +28,27 @@ trans_verbs = ["glorify", "refuse", "destabilize", "undersell", "distort",
                "create mentally", "unbolt", "damn", "masculinize",
                "containerize", "broadcast", "harden", "cork", "partake in",
                "cut out", "shine at", "swish", "sovietize", "deputize",
-               "synchronize", "cross-link", "splint", "co-opt"]
+               "synchronize", "cross-link", "splint", "co-opt", "tout",
+               "muck up", "win", "inhale", "set down", "cloud over", "depilate",
+               "write on", "counterbalance", "attempt", "bulldoze", "try",
+               "outscore", "sink", "reconvict", "implement", "jumble",
+               "get hitched with", "condition", "recapitulate", "bench",
+               "cut to", "omit", "cube", "compost", "draw a bead on", "degrade",
+               "oust", "devise", "permit", "pull", "cybernate", "fire up",
+               "look on", "check over", "tailor-make", "stick", "spare",
+               "marinate", "embroil", "motivate", "effuse", "whap", "poop out",
+               "bet on", "pet", "dandify", "pick out"]
 
 intrans_verbs = ["skip town", "refuse", "houseclean", "ripple", "roll out",
                  "ring out", "rhapsodize", "click", "overlap", "swagger",
                  "harden", "burn out", "oversleep", "slack off", "horse around",
                  "recover", "swish", "chuck up the sponge", "synchronize",
-                 "splinter"]
+                 "splinter", "sulk", "wail", "fly off the handle", "win",
+                 "run away", "depilate", "try", "bulldoze", "sink",
+                 "mill about", "compete", "die down", "take the air",
+                 "rain buckets", "look on", "flump", "skateboard", "marinate",
+                 "take the veil", "disappear", "move involuntarily", "poop out",
+                 "wobble"]
 
 with open("./wordlists/names.csv", "r") as f:
     names = list(set([name[:-1] for name in f.readlines()]))
