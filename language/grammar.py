@@ -11,8 +11,13 @@ def conj():
     return ran(["and", "or"])
 
 
+def coord_conj():
+    return ran([conj(), "but", "because", "though", "yet", "while", "whereas"])
+
+
 def det():
-    return ran(["the", "a"])
+    return ran(["the", "a", "my", "her", "his", "their", "this", "that",
+                "every", "everyone's", "{}'s".format(proper_noun())])
 
 
 def noun():
@@ -59,7 +64,7 @@ def clause():
 
 def sentence():
     out = ran(["{}.".format(clause()),
-               "{}, {} {}.".format(clause(), conj(), clause())])
+               "{}, {} {}.".format(clause(), coord_conj(), clause())])
     print(out)
     return out
 
