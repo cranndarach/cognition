@@ -6,11 +6,11 @@ import random as rd
 # Pre-process data files #
 ##########################
 
-prefix = "/home/rachael/Documents/School/databases/WordNet3.1/dict/index.{}"
+# prefix = "/home/rachael/Documents/School/databases/WordNet3.1/dict/index.{}"
 
 
 def prep_list(pos):
-    with open(prefix.format(pos), "r") as f:
+    with open("./wordlists/index.{}".format(pos), "r") as f:
         wordlist = [line.split(" ")[0].replace("_", " ") for line in
                     f.readlines()[29::]]
     return wordlist
@@ -29,13 +29,14 @@ trans_verbs = ["glorify", "refuse", "destabilize", "undersell", "distort",
                "containerize", "broadcast", "harden", "cork", "partake in",
                "cut out", "shine at", "swish", "sovietize", "deputize",
                "synchronize", "cross-link", "splint", "co-opt"]
+
 intrans_verbs = ["skip town", "refuse", "houseclean", "ripple", "roll out",
                  "ring out", "rhapsodize", "click", "overlap", "swagger",
                  "harden", "burn out", "oversleep", "slack off", "horse around",
                  "recover", "swish", "chuck up the sponge", "synchronize",
                  "splinter"]
 
-with open("/home/rachael/projects/namegen/names.csv", "r") as f:
+with open("./wordlists/names.csv", "r") as f:
     names = list(set([name[:-1] for name in f.readlines()]))
 
 
@@ -88,7 +89,7 @@ def adverb():
 
 
 def prep():
-    return ran(["of", "on", "in", "under"])
+    return ran(["of", "on", "in", "under", "for"])
 
 
 #################
@@ -96,20 +97,27 @@ def prep():
 #################
 
 
+def prep_phrase():
+    return "{} {}".format(prep(), types_np())
+
+
 def verb_phrase():
-    return ran(["{} {}".format(helping_verb(), adjective()),
-                "{} {}".format(helping_verb(), noun_phrase()),
-                "{}".format(intransitive_verb()),
-                "{} {}".format(transitive_verb(), noun_phrase()),
-                "{} {}".format(intransitive_verb(), adverb()),
-                "{} {} {}".format(adverb(), transitive_verb(), noun_phrase())
-                ])
+    sub_vp = ["{}".format(intransitive_verb()),
+              "{} {}".format(transitive_verb(), noun_phrase())]
+
+    return ran(sub_vp + ["{} {}".format(helping_verb(), adjective()),
+                         "{} {}".format(helping_verb(), noun_phrase()),
+                         "{} {}".format(ran(sub_vp), prep_phrase()),
+                         "{} {}".format(intransitive_verb(), adverb()),
+                         "{} {} {}".format(adverb(), transitive_verb(),
+                                           noun_phrase())
+                         ])
 
 
 def noun_phrase():
     return ran([types_np(),
                 "{} {} {}".format(types_np(), conj(), types_np()),
-                "{} {} {}".format(types_np(), prep(), types_np()),
+                "{} {}".format(types_np(), prep_phrase())
                 ])
 
 
@@ -122,7 +130,7 @@ def sentence():
                "{}, {} {}.".format(clause(), coord_conj(), clause())])
     # out = out.capitalize()
     print(out)
-    return out
+    # return out
 
 
 def main():
@@ -155,4 +163,4 @@ def types_np():
 ###################
 
 if __name__ == "__main__":
-    response = sentence()
+    sentence()
