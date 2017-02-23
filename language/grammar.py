@@ -42,7 +42,8 @@ def prep():
 
 
 def verb_phrase():
-    return ran(["{} {}".format(helping_verb(), adjective())])
+    return ran(["{} {}".format(helping_verb(), adjective()),
+                "{} {}".format(helping_verb(), noun_phrase())])
 
 
 def noun_phrase():
@@ -57,8 +58,10 @@ def clause():
 
 
 def sentence():
-    print(ran(["{}.".format(clause()),
-               "{}, {} {}.".format(clause(), conj(), clause())]))
+    out = ran(["{}.".format(clause()),
+               "{}, {} {}.".format(clause(), conj(), clause())])
+    print(out)
+    return out
 
 
 def main():
@@ -91,4 +94,4 @@ def types_np():
 ###################
 
 if __name__ == "__main__":
-    sentence()
+    response = sentence()
