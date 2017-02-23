@@ -2,6 +2,42 @@
 
 import random as rd
 
+##########################
+# Pre-process data files #
+##########################
+
+prefix = "/home/rachael/Documents/School/databases/WordNet3.1/dict/index.{}"
+
+
+def prep_list(pos):
+    with open(prefix.format(pos), "r") as f:
+        wordlist = [line.split(" ")[0].replace("_", " ") for line in
+                    f.readlines()[29::]]
+    return wordlist
+
+nouns = prep_list("noun")
+adjs = prep_list("adj")
+advs = prep_list("adv")
+# verbs = prep_list("verb")
+
+trans_verbs = ["glorify", "refuse", "destabilize", "undersell", "distort",
+               "play a joke on", "add", "impale", "kiss", "discolorize",
+               "ambush", "pinpoint", "communalize", "machine-wash", "nose",
+               "maltreat", "skirt", "roll out", "disbar", "pass over",
+               "mythicize", "click", "ponder", "post", "write down",
+               "create mentally", "unbolt", "damn", "masculinize",
+               "containerize", "broadcast", "harden", "cork", "partake in",
+               "cut out", "shine at", "swish", "sovietize", "deputize",
+               "synchronize", "cross-link", "splint", "co-opt"]
+intrans_verbs = ["skip town", "refuse", "houseclean", "ripple", "roll out",
+                 "ring out", "rhapsodize", "click", "overlap", "swagger",
+                 "harden", "burn out", "oversleep", "slack off", "horse around",
+                 "recover", "swish", "chuck up the sponge", "synchronize",
+                 "splinter"]
+
+with open("/home/rachael/projects/namegen/names.csv", "r") as f:
+    names = list(set([name[:-1] for name in f.readlines()]))
+
 
 ###################
 # Parts of Speech #
@@ -21,24 +57,38 @@ def det():
 
 
 def noun():
-    return ran(["mother", "father", "brother", "sister", "aunt", "uncle"])
+    # return ran(["mother", "father", "brother", "sister", "aunt", "uncle"])
+    return ran(nouns)
 
 
 def proper_noun():
-    return ran(["Anna", "David"])
+    # return ran(["Anna", "David"])
+    return ran(names)
 
 
 def helping_verb():
     return ran(["is"])
 
 
+def transitive_verb():
+    return ran(trans_verbs)
+
+
+def intransitive_verb():
+    return ran(intrans_verbs)
+
+
 def adjective():
-    adjs = ["nice", "tall"]
+    # adjs = ["nice", "tall"]
     return ran(adjs + ["{} {} {}".format(ran(adjs), conj(), ran(adjs))])
 
 
+def adverb():
+    return ran(advs)
+
+
 def prep():
-    return ran(["of"])
+    return ran(["of", "on", "in", "under"])
 
 
 #################
@@ -48,7 +98,12 @@ def prep():
 
 def verb_phrase():
     return ran(["{} {}".format(helping_verb(), adjective()),
-                "{} {}".format(helping_verb(), noun_phrase())])
+                "{} {}".format(helping_verb(), noun_phrase()),
+                "{}".format(intransitive_verb()),
+                "{} {}".format(transitive_verb(), noun_phrase()),
+                "{} {}".format(intransitive_verb(), adverb()),
+                "{} {} {}".format(adverb(), transitive_verb(), noun_phrase())
+                ])
 
 
 def noun_phrase():
@@ -65,6 +120,7 @@ def clause():
 def sentence():
     out = ran(["{}.".format(clause()),
                "{}, {} {}.".format(clause(), coord_conj(), clause())])
+    # out = out.capitalize()
     print(out)
     return out
 
