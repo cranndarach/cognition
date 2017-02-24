@@ -82,15 +82,15 @@ def proper_noun():
 
 
 def helping_verb():
-    return ran(["is"])
+    return ran(["is/are"])
 
 
 def transitive_verb():
-    return ran(trans_verbs)
+    return ran(trans_verbs) + "(s)"
 
 
 def intransitive_verb():
-    return ran(intrans_verbs)
+    return ran(intrans_verbs) + "(s)"
 
 
 def adjective():
