@@ -73,7 +73,9 @@ def det():
 
 def noun():
     # return ran(["mother", "father", "brother", "sister", "aunt", "uncle"])
-    return ran(nouns)
+    out = ran(nouns)
+    print("Noun: {}".format(out))
+    return out
 
 
 def proper_noun():
@@ -86,20 +88,28 @@ def helping_verb():
 
 
 def transitive_verb():
-    return ran(trans_verbs) + "(s)"
+    out = ran(trans_verbs) + "(s)"
+    print("Transitive verb: {}".format(out))
+    return out
 
 
 def intransitive_verb():
-    return ran(intrans_verbs) + "(s)"
+    out = ran(intrans_verbs) + "(s)"
+    print("Intransitive verb: {}".format(out))
+    return out
 
 
 def adjective():
     # adjs = ["nice", "tall"]
-    return ran(adjs + ["{} {} {}".format(ran(adjs), conj(), ran(adjs))])
+    out = ran(adjs + ["{} {} {}".format(ran(adjs), conj(), ran(adjs))])
+    print("Adjective: " + out)
+    return out
 
 
 def adverb():
-    return ran(advs)
+    out = ran(advs)
+    print("Adverb: {}".format(out))
+    return out
 
 
 def prep():
@@ -112,31 +122,39 @@ def prep():
 
 
 def prep_phrase():
-    return "{} {}".format(prep(), types_np())
+    out = "{} {}".format(prep(), types_np())
+    print("Prepositional phrase: " + out)
+    return out
 
 
 def verb_phrase():
     sub_vp = ["{}".format(intransitive_verb()),
               "{} {}".format(transitive_verb(), noun_phrase())]
 
-    return ran(sub_vp + ["{} {}".format(helping_verb(), adjective()),
-                         "{} {}".format(helping_verb(), noun_phrase()),
-                         "{} {}".format(ran(sub_vp), prep_phrase()),
-                         "{} {}".format(intransitive_verb(), adverb()),
-                         "{} {} {}".format(adverb(), transitive_verb(),
-                                           noun_phrase())
-                         ])
+    out = ran(sub_vp + ["{} {}".format(helping_verb(), adjective()),
+                        "{} {}".format(helping_verb(), noun_phrase()),
+                        "{} {}".format(ran(sub_vp), prep_phrase()),
+                        "{} {}".format(intransitive_verb(), adverb()),
+                        "{} {} {}".format(adverb(), transitive_verb(),
+                                          noun_phrase())
+                        ])
+    print("Verb phrase: " + out)
+    return out
 
 
 def noun_phrase():
-    return ran([types_np(),
-                "{} {} {}".format(types_np(), conj(), types_np()),
-                "{} {}".format(types_np(), prep_phrase())
-                ])
+    out = ran([types_np(),
+               "{} {} {}".format(types_np(), conj(), types_np()),
+               "{} {}".format(types_np(), prep_phrase())
+               ])
+    print("Noun phrase: " + out)
+    return out
 
 
 def clause():
-    return "{} {}".format(noun_phrase(), verb_phrase())
+    out = "{} {}".format(noun_phrase(), verb_phrase())
+    print("Clause: " + out)
+    return out
 
 
 def sentence():
@@ -176,5 +194,5 @@ def types_np():
 # Run the program #
 ###################
 
-if __name__ == "__main__":
-    sentence()
+# if __name__ == "__main__":
+#     sentence()
