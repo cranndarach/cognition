@@ -67,7 +67,7 @@ def coord_conj():
 
 
 def det():
-    return ran(["the", "a", "my", "her", "his", "their", "this", "that",
+    return ran(["the", "a(n)", "my", "her", "his", "their", "this", "that",
                 "every", "everyone's", "{}'s".format(proper_noun())])
 
 
