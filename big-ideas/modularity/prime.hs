@@ -3,7 +3,8 @@
 -- also divides the problem into smaller functions. Notice that the functional
 -- style of Haskell allows for coding special cases directly without having
 -- to use a separate function or if...elif statements. It also recognizes 0
--- as not being prime without hard-coding it.
+-- as not being prime without hard-coding it. To do this in Python risks a
+-- stack overflow.
 
 biggestPossibleFactor :: Int -> Int
 biggestPossibleFactor num = num `div` 2
