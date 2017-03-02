@@ -29,18 +29,31 @@ def specifics(num):
         return None
 
 
-def is_prime(num):
-    if specifics(num) != None:
-        return specifics(num)
-    stop_val = biggest_possible_factor(num)
-    candidate = 2
-    while candidate <= stop_val:
-        if evenly_divides(num, candidate):
-            return False
-        else:
-            candidate += 1
-    else:
+def check_factors(a, b, stop):
+    if evenly_divides(a, b):
+        return False
+    elif b >= stop:
         return True
+    else:
+        b += 1
+        check_factors(a, b, stop)
+
+
+def is_prime(num):
+    # if specifics(num) != "not special":
+    if specifics(num) in [True, False]:
+        return specifics(num)
+    else:
+        stop_val = biggest_possible_factor(num)
+        start_val = 2
+        return check_factors(num, start_val, stop_val)
+    # while candidate <= stop_val:
+    #     if evenly_divides(num, candidate):
+    #         return False
+    #     else:
+    #         candidate += 1
+    # else:
+    #     return True
 
 if __name__ == "__main__":
     my_num = int(time.time())
