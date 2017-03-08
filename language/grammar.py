@@ -2,13 +2,13 @@
 
 import random as rd
 import json
-import numpy as np
+# import numpy as np
 
 ##########################
 # Pre-process data files #
 ##########################
 
-with open("/home/rachael/projects/ngrams/syngrams.json", "r") as f:
+with open("syngrams.json", "r") as f:
     ngrams = json.load(f)
 
 ###################
@@ -80,6 +80,10 @@ def sentence():
 def ran(spl):
     return rd.choice(spl)
 
+noun = (rd.choices(ngrams["NN"].keys(), weights=ngrams["NN"].values()) while True)
+adjective = (rd.choices(ngrams["JJ"].keys(), weights=ngrams["JJ"].values()) while True)
+
+nominal = (rd.choice([next(noun), "{} {}".format(next(adjective), next(noun))]))
 
 def nominal():
     return ran([noun(), "{} {}".format(adjective(), noun())])
