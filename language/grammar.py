@@ -53,9 +53,10 @@ adv = word_gen(adverbs)
 
 def noun_phrase():
     while True:
-        options = [next(pn),
+        options = [next(pn).title(),
                    next(prp),
-                   "{} {}".format(next(det), next(nom))]
+                   "{} {}".format(next(det), next(nom))
+                   ]
         yield rd.choice(options)
 
 
@@ -66,11 +67,17 @@ def nominal():
         yield rd.choice(options)
 
 
-def verb_phrase():
+def vb():
     while True:
         options = [next(verb),
-                   "{} {}".format(next(adv), next(verb)),
-                   "{} {}".format(next(verb), next(pp))
+                   "{} {}".format(next(adv), next(verb))]
+        yield rd.choice(options)
+
+
+def verb_phrase():
+    while True:
+        options = [next(v),
+                   "{} {}".format(next(v), next(pp))
                    ]
         yield rd.choice(options)
 
@@ -80,15 +87,26 @@ def prep_phrase():
         yield "{} {}".format(next(prep), next(np))
 
 
+def sentence():
+    while True:
+        sent = "{} {}.".format(next(np), next(vp))
+        sent = sent.capitalize()
+        yield sent
+
+
 np = noun_phrase()
 nom = nominal()
+v = vb()
 vp = verb_phrase()
 pp = prep_phrase()
 
 
+def go():
+    print(next(sentence()))
+
 # ###################
 # # Run the program #
 # ###################
-#
-# if __name__ == "__main__":
-#     sentence()
+
+if __name__ == "__main__":
+    go()
