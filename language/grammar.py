@@ -2,8 +2,6 @@
 
 import random as rd
 import json
-# import sys
-# import numpy as np
 
 ##########################
 # Pre-process data files #
@@ -14,7 +12,8 @@ with open("syngrams.json", "r") as f:
 
 
 def expand_lex(lex):
-    return [word for word, freq in lex.items() for _ in range(int(freq/10000))]
+    return [word for word, freq in lex.items() for _ in
+            range(int(freq/1000))]
 
 
 def word_gen(words):
