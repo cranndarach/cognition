@@ -28,6 +28,17 @@ def word_gen(words):
         yield rd.choice(words)
 
 
+# A curiosity function:
+def percent_of(what, query):
+    how_many = len(list(filter(lambda x: x == query, what)))
+    out_of = len(what)
+    percent = (how_many / out_of) * 100
+    percent = round(percent, 3)
+    print("{} out of {}, or {}%".format(str(how_many), str(out_of),
+                                        str(percent)))
+    return percent
+
+
 ###################
 # Parts of Speech #
 ###################
