@@ -51,20 +51,45 @@ prp = word_gen(personal_pronouns)
 adv = word_gen(adverbs)
 
 
-def noun_phrase():
+def sgl_np():
     while True:
         options = [next(pn).title(),
                    next(prp),
                    "{} {}".format(next(det), next(nom))
+                   # "{} {} {}".format(next(noun_phrase()), next(conj),
+                   #                   next(noun_phrase()))
                    ]
         yield rd.choice(options)
 
 
-def nominal():
+def conj_np():
+    while True:
+        yield "{} {} {}".format(next(sgl_np()), next(conj), next(sgl_np()))
+
+
+def noun_phrase():
+    while True:
+        yield rd.choice([next(sgl_np()), next(conj_np())])
+
+
+def sgl_nom():
     while True:
         options = [next(noun),
-                   "{} {}".format(next(adj), next(noun))]
+                   "{} {}".format(next(adj), next(noun))
+                   # "{} {} {}".format(next(nominal()), next(conj),
+                   #                   next(nominal()))
+                   ]
         yield rd.choice(options)
+
+
+def conj_nom():
+    while True:
+        yield "{} {} {}".format(next(sgl_nom()), next(conj), next(sgl_nom()))
+
+
+def nominal():
+    while True:
+        yield rd.choice([next(sgl_nom()), next(conj_nom())])
 
 
 def vb():
