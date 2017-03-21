@@ -11,9 +11,16 @@ with open("syngrams.json", "r") as f:
     ngrams = json.load(f)
 
 
-def expand_lex(lex):
-    return [word for word, freq in lex.items() for _ in
-            range(int(freq/1000))]
+def expand_lex(*args):
+    words = []
+    for lex in args:
+        words += [word for word, freq in lex.items() for _ in
+                  range(int(freq/10000))]
+    # words = list(map(lambda w, f: [w] * int(f/10000), [lex.items() for lex in
+    #                  list(args))])
+    return words
+    # return [word for word, freq in lex.items() for _ in
+    #         range(int(freq/10000))]
 
 
 def word_gen(words):
@@ -30,14 +37,14 @@ adjectives = expand_lex(ngrams["JJ"])
 conjunctions = expand_lex(ngrams["CC"])
 prepositions = expand_lex(ngrams["IN"])
 proper_nouns = expand_lex(ngrams["NNP"])
-determiners = expand_lex(ngrams["DT"])
+determiners = expand_lex(ngrams["DT"], ngrams["PRP$"])
 personal_pronouns = expand_lex(ngrams["PRP"])
 adverbs = expand_lex(ngrams["RB"])
 verbs = expand_lex(ngrams["VBZ"])
 
-# ####################
-# # Helper Functions #
-# ####################
+####################
+# Helper Functions #
+####################
 
 noun = word_gen(nouns)
 adj = word_gen(adjectives)
