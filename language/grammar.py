@@ -68,7 +68,10 @@ def conj_np():
 
 def noun_phrase():
     while True:
-        yield rd.choice([next(sgl_np()), next(conj_np())])
+        # yield rd.choice([next(sgl_np()), next(conj_np())])
+        # I know this is just an extra layer but I'm leaving it so
+        # that the single/conjunction can be brought back if wanted.
+        yield next(sgl_np())
 
 
 def sgl_nom():
@@ -88,7 +91,8 @@ def conj_nom():
 
 def nominal():
     while True:
-        yield rd.choice([next(sgl_nom()), next(conj_nom())])
+        # yield rd.choice([next(sgl_nom()), next(conj_nom())])
+        yield next(sgl_nom())
 
 
 def vb():
