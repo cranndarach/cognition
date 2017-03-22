@@ -15,12 +15,8 @@ def expand_lex(*args):
     words = []
     for lex in args:
         words += [word for word, freq in lex.items() for _ in
-                  range(int(freq/10000))]
-    # words = list(map(lambda w, f: [w] * int(f/10000), [lex.items() for lex in
-    #                  list(args))])
+                  range(int(freq / 5000))]
     return words
-    # return [word for word, freq in lex.items() for _ in
-    #         range(int(freq/10000))]
 
 
 def word_gen(words):
@@ -48,10 +44,12 @@ adjectives = expand_lex(ngrams["JJ"])
 conjunctions = expand_lex(ngrams["CC"])
 prepositions = expand_lex(ngrams["IN"])
 proper_nouns = expand_lex(ngrams["NNP"])
-determiners = expand_lex(ngrams["DT"], ngrams["PRP$"])
+determiners = expand_lex(ngrams["DT"], ngrams["PRP$"], ngrams["WDT"])
 personal_pronouns = expand_lex(ngrams["PRP"])
 adverbs = expand_lex(ngrams["RB"])
 verbs = expand_lex(ngrams["VBZ"])
+modals = expand_lex(ngrams["MD"])
+wh_adverbs = expand_lex(ngrams["WRB"])
 
 ####################
 # Helper Functions #
@@ -66,6 +64,8 @@ prep = word_gen(prepositions)
 pn = word_gen(proper_nouns)
 prp = word_gen(personal_pronouns)
 adv = word_gen(adverbs)
+wh_adv = word_gen(wh_adverbs)
+modal = word_gen(modals)
 
 
 def sgl_np():
@@ -133,18 +133,30 @@ def prep_phrase():
         yield "{} {}".format(next(prep), next(np))
 
 
+def sub_clause():
+    while True:
+        yield "{} {}".format(next(wh_adv), next(cl))
+
+
+def clause():
+    while True:
+        yield "{} {}".format(next(np), next(vp))
+        # sent = sent.capitalize()
+        # yield sent
+
+
 def sentence():
     while True:
-        sent = "{} {}.".format(next(np), next(vp))
-        sent = sent.capitalize()
-        yield sent
-
+        options = [next(cl)]*4 + ["{}, {}".format(next(cl), next(subcl))]
+        yield "{}.".format(rd.choice(options)).capitalize()
 
 np = noun_phrase()
 nom = nominal()
 v = vb()
 vp = verb_phrase()
 pp = prep_phrase()
+cl = clause()
+subcl = sub_clause()
 
 
 def go():
