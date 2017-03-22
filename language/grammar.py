@@ -199,7 +199,7 @@ def clause():
 def sentence():
     while True:
         options = [next(cl)]*4 + ["{}, {}".format(next(cl), next(subcl))]
-        yield "{}.".format(rd.choice(options)).capitalize()
+        yield "{}.".format(rd.choice(options))
 
 det = determiner()
 np = noun_phrase()
