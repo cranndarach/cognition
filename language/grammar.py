@@ -155,16 +155,16 @@ def nominal():
 
 def tverb():
     while True:
-        options = ["{} {}".format(next(t_verb), next(np)),
-                   "{} {} {}".format(next(adv), next(t_verb), next(np))
+        options = ["{}(s) {}".format(next(t_verb), next(np)),
+                   "{} {}(s) {}".format(next(adv), next(t_verb), next(np))
                    ]
         yield rd.choice(options)
 
 
 def iverb():
     while True:
-        options = [next(i_verb),
-                   "{} {}".format(next(adv), next(i_verb))
+        options = ["{}(s)".format(next(i_verb)),
+                   "{} {}(s)".format(next(adv), next(i_verb))
                    ]
         yield rd.choice(options)
 
