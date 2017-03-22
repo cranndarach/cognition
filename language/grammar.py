@@ -1,14 +1,61 @@
 #!/usr/bin/env python3
 
 import random as rd
-import json
+# import json
 
 ##########################
 # Pre-process data files #
 ##########################
 
-with open("syngrams.json", "r") as f:
-    ngrams = json.load(f)
+
+def prep_list(pos):
+    with open("./wordlists/index.{}".format(pos), "r") as f:
+        wordlist = [line.split(" ")[0].replace("_", " ") for line in
+                    f.readlines()[29::]]
+    return wordlist
+
+nouns = prep_list("noun")
+adjectives = prep_list("adj")
+adverbs = prep_list("adv")
+conjunctions = ["and", "or"]
+coord_conjs = conjunctions + ["but", "because", "though", "yet", "while",
+                              "whereas"]
+determiners = ["the", "a(n)", "my", "her", "his", "their", "this", "that",
+               "every", "everyone's"]
+prepositions = ["of", "on", "in", "under", "inside", "within", "outside",
+                "in front of", "behind", "next to", "from", "toward", "near",
+                "on top of", "across from"]
+trans_verbs = ["glorify", "refuse", "destabilize", "undersell", "distort",
+               "play a joke on", "add", "impale", "kiss", "discolorize",
+               "ambush", "pinpoint", "communalize", "machine-wash", "nose",
+               "maltreat", "skirt", "roll out", "disbar", "pass over",
+               "mythicize", "click", "ponder", "post", "write down",
+               "create mentally", "unbolt", "damn", "masculinize",
+               "containerize", "broadcast", "harden", "cork", "partake in",
+               "cut out", "shine at", "swish", "sovietize", "deputize",
+               "synchronize", "cross-link", "splint", "co-opt", "tout",
+               "muck up", "win", "inhale", "set down", "cloud over", "depilate",
+               "write on", "counterbalance", "attempt", "bulldoze", "try",
+               "outscore", "sink", "reconvict", "implement", "jumble",
+               "get hitched with", "condition", "recapitulate", "bench",
+               "cut to", "omit", "cube", "compost", "draw a bead on", "degrade",
+               "oust", "devise", "permit", "pull", "cybernate", "fire up",
+               "look on", "check over", "tailor-make", "stick", "spare",
+               "marinate", "embroil", "motivate", "effuse", "whap", "poop out",
+               "bet on", "pet", "dandify", "pick out"]
+intrans_verbs = ["skip town", "refuse", "houseclean", "ripple", "roll out",
+                 "ring out", "rhapsodize", "click", "overlap", "swagger",
+                 "harden", "burn out", "oversleep", "slack off", "horse around",
+                 "recover", "swish", "chuck up the sponge", "synchronize",
+                 "splinter", "sulk", "wail", "fly off the handle", "win",
+                 "run away", "depilate", "try", "bulldoze", "sink",
+                 "mill about", "compete", "die down", "take the air",
+                 "rain buckets", "look on", "flump", "skateboard", "marinate",
+                 "take the veil", "disappear", "move involuntarily", "poop out",
+                 "wobble"]
+
+with open("./wordlists/names.csv", "r") as f:
+    proper_nouns = [name[:-1] for name in f.readlines()]
 
 
 def expand_lex(*args):
@@ -39,39 +86,24 @@ def percent_of(what, query):
 # Parts of Speech #
 ###################
 
-nouns = expand_lex(ngrams["NN"])
-adjectives = expand_lex(ngrams["JJ"])
-conjunctions = expand_lex(ngrams["CC"])
-prepositions = expand_lex(ngrams["IN"])
-proper_nouns = expand_lex(ngrams["NNP"])
-determiners = expand_lex(ngrams["DT"], ngrams["PRP$"], ngrams["WDT"])
-personal_pronouns = expand_lex(ngrams["PRP"])
-adverbs = expand_lex(ngrams["RB"])
-verbs = expand_lex(ngrams["VBZ"])
-modals = expand_lex(ngrams["MD"])
-wh_adverbs = expand_lex(ngrams["WRB"])
-
-####################
-# Helper Functions #
-####################
-
 noun = word_gen(nouns)
 adj = word_gen(adjectives)
 det = word_gen(determiners)
-verb = word_gen(verbs)
-conj = word_gen(conjunctions)
+t_verb = word_gen(trans_verbs)
+i_verb = word_gen(intrans_verbs)
+conj = word_gen(coord_conjs)
 prep = word_gen(prepositions)
 pn = word_gen(proper_nouns)
-prp = word_gen(personal_pronouns)
+# prp = word_gen(personal_pronouns)
 adv = word_gen(adverbs)
-wh_adv = word_gen(wh_adverbs)
-modal = word_gen(modals)
+# wh_adv = word_gen(wh_adverbs)
+# modal = word_gen(modals)
 
 
 def sgl_np():
     while True:
         options = [next(pn).title(),
-                   next(prp),
+                   # next(prp),
                    "{} {}".format(next(det), next(nom))
                    # "{} {} {}".format(next(noun_phrase()), next(conj),
                    #                   next(noun_phrase()))
@@ -113,17 +145,28 @@ def nominal():
         yield next(sgl_nom())
 
 
-def vb():
+def tverb():
     while True:
-        options = [next(verb),
-                   "{} {}".format(next(adv), next(verb))]
+        options = ["{} {}".format(next(t_verb), next(np)),
+                   "{} {} {}".format(next(adv), next(t_verb), next(np))
+                   ]
+        yield rd.choice(options)
+
+
+def iverb():
+    while True:
+        options = [next(i_verb),
+                   "{} {}".format(next(adv), next(i_verb))
+                   ]
         yield rd.choice(options)
 
 
 def verb_phrase():
     while True:
-        options = [next(v),
-                   "{} {}".format(next(v), next(pp))
+        options = [next(iv),
+                   "{} {}".format(next(iv), next(pp)),
+                   next(tv),
+                   "{} {}".format(next(tv), next(pp))
                    ]
         yield rd.choice(options)
 
@@ -135,7 +178,7 @@ def prep_phrase():
 
 def sub_clause():
     while True:
-        yield "{} {}".format(next(wh_adv), next(cl))
+        yield "{} {}".format(next(conj), next(cl))
 
 
 def clause():
@@ -152,7 +195,8 @@ def sentence():
 
 np = noun_phrase()
 nom = nominal()
-v = vb()
+iv = iverb()
+tv = tverb()
 vp = verb_phrase()
 pp = prep_phrase()
 cl = clause()
