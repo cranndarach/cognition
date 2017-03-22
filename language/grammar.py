@@ -88,7 +88,7 @@ def percent_of(what, query):
 
 noun = word_gen(nouns)
 adj = word_gen(adjectives)
-det = word_gen(determiners)
+dt = word_gen(determiners)
 t_verb = word_gen(trans_verbs)
 i_verb = word_gen(intrans_verbs)
 conj = word_gen(coord_conjs)
@@ -98,6 +98,14 @@ pn = word_gen(proper_nouns)
 adv = word_gen(adverbs)
 # wh_adv = word_gen(wh_adverbs)
 # modal = word_gen(modals)
+
+
+def determiner():
+    while True:
+        options = [next(dt),
+                   "{}'s".format(next(pn))
+                   ]
+        yield rd.choice(options)
 
 
 def sgl_np():
@@ -193,6 +201,7 @@ def sentence():
         options = [next(cl)]*4 + ["{}, {}".format(next(cl), next(subcl))]
         yield "{}.".format(rd.choice(options)).capitalize()
 
+det = determiner()
 np = noun_phrase()
 nom = nominal()
 iv = iverb()
