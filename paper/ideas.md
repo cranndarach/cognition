@@ -35,10 +35,11 @@ sense, "y=f(x)", in contrast with how it is used in imperative programming
 These two styles of programming relate to the computational theories of
 cognition in a couple ways. Interestingly, they can both be considered modular,
 but in different ways. They also each have implementations made with fervent
-devotion and with less commitment. There are also areas where each excels and
-the other lags behind, which may have interesting implications for cognition. 
+devotion to their style, and others made with less commitment. There are also
+areas where each excels and the other lags behind, which may have interesting
+implications for cognition.
 
-### Modularity
+## Modularity
 
 First, both object-oriented programming and functional programming can be
 considered modular in their own respect. Objects are units in themselves. They
@@ -50,7 +51,7 @@ input to function `f` will yield the same result every single time.
 Calculations are entirely self-contained, even if the output can be assigned to
 a new global variable.
 
-### Strict adherence vs. somewhere in between
+## Strict adherence vs. somewhere in between
 
 There are some languages that are undoubtedly object-oriented, e.g., C/C++ and
 Java. One might write a class with a set of properties and methods that other
