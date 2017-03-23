@@ -62,7 +62,9 @@ Functional programming and object-oriented programming each have their particula
 
 A strength of object-oriented programming is its conceptual structure. Objects have attributes, and those attributes are themselves objects. Thus, one could construct objects out of features, relationships, tasks, etc., allowing for hierarchical structure as well as an intuitive way to describe any given object.
 
+Mutability is the other primary advantage of object-oriented programming. It is generally more efficient to overwrite a variable's value with a more up-to-date version. This is also fairly intuitive from a cognitive perspective: knowledge, experience, memory, even thought processes are dynamic, and so it makes sense to allow computational implementations of cognition to have mutable values as well.
 
+But, challenging the above intuition, one of the advantages of functional programming is that its values are immutable. Yes, it is convenient to simply update the value of `x` as you go, but it is not exactly safe. A functional program simply describes the means of getting from one value to another, but leaves the input value intact. That is, after calculating the value of `f(x)` for `x=1`, `x` will still be equal to 1. No matter how many times that function is run, the value of `x` will remain the same. New values may be added to memory, but the existing ones remain as they are. Could that be more reflective of how cognition works? When we learn something new about an existing concept, is that concept overwritten with a clone of itself with new piece of information attached, or is the new piece of information stored alongside the existing knowledge, with functions to relate them as needed? It is an interesting question.
 
 
 
