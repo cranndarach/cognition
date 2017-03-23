@@ -137,35 +137,39 @@ existing knowledge, with functions to relate them as needed? It is an
 interesting question.
 
 Functional programming has other advantages. First, it excels at pattern
-matching.
+matching. This is best depicted with example code. Imagine some (admittedly
+unnatural) scenario where you wanted to check a pair of values and return `True`
+if the first value was "apples" or (logical or) the second value was "oranges."
+In Python, that would take some surprisingly convoluted code:
 
+```py
+def apples_and_oranges(pair):
+    first, second = pair
+    if first == "apples":
+        return True
+    elif second == "oranges":
+        return True
+    else:
+        return False
+```
 
+First, the pair is broken into two separate variables. Then each one is tested
+in turn for its equivalence with the desired value. If a match is found, the
+function returns `True`. If not, it returns `False`.
 
+Compare that to the Haskell equivalent:
 
+```hs
+applesAndOranges :: (String, String) -> Bool
+applesAndOranges ("apples", _) = True
+applesAndOranges (_, "oranges") = True
+applesAndOranges _ = False
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The first line is the type statement, telling the interpreter that the input
+will be a pair of two strings, and the output will be a boolean. The next lines
+do the pattern matching. The first line says, "for a pair that starts with
+'apples', don't bother evaluating the second member. The answer is `True`." The
+same applies to the next line: the first member does not need to be evaluated
+if the second member is "oranges." The last line says, "if you've made it this far,
+the answer is `False`."
