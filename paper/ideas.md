@@ -1,43 +1,21 @@
-I would like to explore different computational theories for the paper,
-relating the computational theory of mind to more general concepts in
-programming. In particular, I am interested in the distinction between
-modular and distributed approaches to cognitive modeling, and how (or
-whether) it can be analogized to the distinction between object-oriented
-programming and functional programming.
+The computational theory of mind is fascinating. It takes the huge, nebulous
+concept of cognition, recently thought to be so opaque that is was considered
+useless in science, and turns it into something so concrete and _attainable_
+that I can try to program little bits of it as part of my class notes, and I
+can entertain the idea that the mind is Turing complete.
 
-## Distributed vs. modular approaches to modeling
-
-From a theoretical perspective, these two approaches are treated as
-dichotomous. But from an implementational perspective, how distinct are they
-really? If the modular approach only requires that *something* be private to
-a given module, can it be otherwise largely distributed? Likewise, does the
-distributed approach really hold that *literally everything* must be public,
-accessible to every computation, at all times? Or are values (or states, etc.)
-only required to be available within a given task? If it is the latter, is that
-task itself, then, a module?
-
-It feels like this may be less of a hard distinction than it is typically
-portrayed.
-
-Maybe it is more of a matter of degree. Theoretically-proposed models may be
-“purely modular” or “purely distributed,” but implemented models might be
-better described as “more modular than distributed” or vice-versa.
-
-Or maybe it is a matter of framing. Talking about *tasks* and *processes* may
-fit better with distributed terminology, whereas talking about the *processor*
-might lend itself to a modular framing.
-
-Building off that, scale may also play a role. Computations may be distributed
-within a certain process, but only within that process. Then, if that process
-is part of a larger one, the sub-processes may be modular.
+My programming skills are very much still developing, and one thing that I have
+been learning about recently is the distinction between functional programming
+and object-oriented programming styles. It is an interesting distinction
+because it shifts the way I think about programming problems, and it has
+introduced me to new ways of making code more efficient. When I am thinking
+about computational theories of cognition, I find myself considering which
+style would be more appropriate for a given problem. It seems that the
+distinction between object-oriented and functional programming could have
+implications for our understanding of cognition, and I would like to explore
+this idea more.
 
 ## Object-oriented vs. functional programming
-
-I like to try to program some of the examples we talk about in class. When
-I start to think about how to go about a particular problem, one of the first
-questions I consider is what language to use, and a very closely related
-question is what style will be most useful for this problem: functional,
-object-oriented, or something in between?
 
 In object-oriented programming, everything is an object: a string, a number, an
 expression, a function, all objects. Objects have types (or classes) that
