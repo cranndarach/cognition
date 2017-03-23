@@ -171,5 +171,20 @@ will be a pair of two strings, and the output will be a boolean. The next lines
 do the pattern matching. The first line says, "for a pair that starts with
 'apples', don't bother evaluating the second member. The answer is `True`." The
 same applies to the next line: the first member does not need to be evaluated
-if the second member is "oranges." The last line says, "if you've made it this far,
-the answer is `False`."
+if the second member is "oranges." The last line says, "if you've made it this
+far, don't bother unpacking the pair. The answer is `False`."
+
+This pattern-matching aptitude definitely seems like a place where functional
+programming mirrors cognition better than object-oriented programming does, and
+is worth thinking more about.
+
+The "lazy" evaluation style ("don't bother evaluating the other member") is
+also intriguing. By limiting computation to only what is needed to achieve the
+answer, it allows for a way to deal with infinity where many other languages
+would crash (e.g., Haskell has no problem grabbing the first three numbers of
+an infinite list in `take 3 [1..]`, whereas other languages would need to
+generate the "entire" infinite list first). If there is an analogous cognitive
+evaluation style, it may suggest a way to handle concerns of limited
+computational power/working memory that come with some computational theories.
+
+
